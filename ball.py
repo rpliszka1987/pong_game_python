@@ -1,7 +1,5 @@
 from turtle import Turtle
 
-MOVE_DISTANCE = 10
-
 class Ball(Turtle):
     """Creates ball for the Pong Game"""
     def __init__(self):
@@ -10,9 +8,14 @@ class Ball(Turtle):
         self.color("white")
         self.penup()
         self.goto(0,0)
+        self.x_move = 10
+        self.y_move = 10
 
     def move(self):
         """Moved the ball on the screen"""
-        new_x = self.xcor() + MOVE_DISTANCE
-        new_y = self.ycor() + MOVE_DISTANCE
+        new_x = self.xcor() + self.x_move
+        new_y = self.ycor() + self.y_move
         self.goto(new_x,new_y)
+
+    def bounce(self):
+        self.y_move *= -1
